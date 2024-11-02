@@ -1,0 +1,10 @@
+{
+  "name": "scraper-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@clickhouse/client": "^1.5.0",
+    "axios": "^1.7.7"
+  }
+}
