@@ -169,17 +169,19 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to fetch from api: %v", err)
 	}
-	fmt.Printf("Total Results %s \n", res.MainInfo.TotalResults)
-	err = insertData(res.Mods.ListItems, 1, conn)
-	if err != nil {
-		log.Fatalf("failed to insert to db %v", err)
-	}
 	totalResults, err1 := strconv.ParseInt(res.MainInfo.TotalResults, 10, 64)
 	pageSize, err2 := strconv.ParseInt(res.MainInfo.PageSize, 10, 64)
 	if err1 != nil || err2 != nil {
 		log.Fatalf("failed to parse total results: %s, page size %s", res.MainInfo.TotalResults, res.MainInfo.PageSize)
 	}
 	totalPages := totalResults / pageSize
+	fmt.Printf("Total Pages: %d, result: %d, page size: %d  \n", totalPages, totalResults, pageSize)
+	err = insertData(res.Mods.ListItems, 1, conn)
+	if err != nil {
+		log.Fatalf("failed to insert to db %v", err)
+	}
+	fmt.Printf("Inserted page 1 \n")
+
 	for i := 2; i <= int(totalPages); i++ {
 		res, err := fetchData(i)
 		if err != nil {
@@ -191,7 +193,7 @@ func main() {
 			fmt.Printf("failed to insert to db page %d error: %v \n", i, err)
 			continue
 		}
-		fmt.Printf("Inserted page: %d", i)
+		fmt.Printf("Inserted page: %d \n", i)
 		time.Sleep(25 * time.Second)
 	}
 
