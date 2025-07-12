@@ -13,7 +13,7 @@ const clickClient = new createClient({
     format: 'json'
 });
 // To avoid blocking
-const DelayTime = 25000; // 25s 
+const DelayTime = 18000; // 25s 
 const delay = (ms)=> new Promise(resolve => setTimeout(resolve, ms));
 
 const fetchData = (page_no) => axios.get(`https://www.daraz.com.np/computing/?ajax=true&page=${page_no}`)
