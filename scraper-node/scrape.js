@@ -7,7 +7,6 @@ const clickClient = new createClient({
   url: "http://localhost:8123",
   basicAuth: {
     username: "default",
-    password: "",
   },
   debug: false,
   format: "json",
