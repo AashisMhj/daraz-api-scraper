@@ -36,9 +36,9 @@ truncate table default.daraz
 -- export to parquet
 clickhouse-client  -- login in to clickhouse server
 
-SELECT * FROM default.daraz where scraped_date <= '2025-09-30' INTO OUTFILE 'daraz-2025-09-30.parquet' FORMAT Parquet;
+SELECT * FROM default.daraz where scraped_date <= '2026-06-30' INTO OUTFILE 'daraz-2026-06-30.parquet' FORMAT Parquet;
 
-delete from default.daraz where scraped_date <= '2025-09-30'
+delete from default.daraz where scraped_date <= '2026-06-30'
 
 -- basic database queries
 show databases; -- list database
