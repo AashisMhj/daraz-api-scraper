@@ -1,5 +1,5 @@
 ```bash
 go run main.go
 ## build
-go build -o darazapiscraper main.go
+go build -o daraz-scraper main.go
 ```
